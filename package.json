@@ -1,0 +1,51 @@
+{
+  "title": "Mutual SAM",
+  "name": "mutual-sam-crm",
+  "version": "1.0.0",
+  "description": "Software de Facturacion para la Mutual del SAM",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luislujan/mutual.git"
+  },
+  "author": "Luis Lujan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luislujan/mutual/issues"
+  },
+  "homepage": "https://github.com/luislujan/mutual#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "mongodb": "^3.5.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2",
+    "xo": "^0.18.2"
+  },
+  "xo": {
+    "space": true,
+    "semicolon": false,
+    "rules": {
+      "new-cap": [
+        "error",
+        {
+          "capIsNew": false
+        }
+      ],
+      "camelcase": [
+        2,
+        {
+          "properties": "never"
+        }
+      ]
+    },
+    "envs": [
+      "node",
+      "es6"
+    ]
+  }
+}
