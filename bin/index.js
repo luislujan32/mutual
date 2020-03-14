@@ -4,7 +4,7 @@ const config = require('config')
 
 const app = require('../lib')
 const {connect} = require('../lib/models')
-const banner = require('../lib/util/banner')
+const banner = require('../lib/utils/banner')
 
 const server = http.createServer(app)
 server.on('error', onError)
