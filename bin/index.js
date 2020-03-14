@@ -1,4 +1,3 @@
-
 const http = require('http')
 const config = require('config')
 
@@ -13,7 +12,6 @@ server.on('listening', onListening)
 connect()
   .then(async () => {
     console.log('MongoDB connected')
-    await facCache.load()
     server.listen(config.http.port, config.http.host)
   })
   .catch(err => {
@@ -21,26 +19,17 @@ connect()
   })
 
 async function onError(err) {
-  log.error(err)
-  await issueReporter(err)
-  process.exit(0)
+  console.error('UNCAUGHT EXCEPTION', err)
 }
 
 function onListening() {
-  log.info(banner(config.env, config.http.host, config.http.port))
+  console.log(banner(config.env, config.http.host, config.http.port))
 }
 
 process.on('uncaughtException', err => {
   console.error('UNCAUGHT EXCEPTION', err)
-  issueReporter(err, null, {
-    type: 'uncaughtException'
-  })
-  log.fatal(err.stack || err.message)
 })
 
 process.on('unhandledRejection', (reason, p) => {
-  issueReporter(reason, null, {
-    type: 'unhandledRejection'
-  })
-  log.fatal('Unhandled Rejection at: \nPROMISE', p, '\nREASON:', reason)
+  console.error('Unhandled Rejection at: \nPROMISE', p, '\nREASON:', reason)
 })
