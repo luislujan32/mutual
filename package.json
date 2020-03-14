@@ -5,7 +5,7 @@
   "description": "Software de Facturacion para la Mutual del SAM",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node ./bin/index.js"
   },
   "repository": {
     "type": "git",
@@ -19,8 +19,11 @@
   "homepage": "https://github.com/luislujan/mutual#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "config": "^3.3.0",
     "express": "^4.17.1",
-    "mongodb": "^3.5.5"
+    "http": "0.0.0",
+    "mongodb": "^3.5.5",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
