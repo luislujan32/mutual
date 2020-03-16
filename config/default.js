@@ -13,4 +13,6 @@ config.http = {
   port: 3000
 }
 
+config.env = 'ALPHA VERSION'
+
 module.exports = config

@@ -1,0 +1,54 @@
+<!-- Sidebar -->
+<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+  <!-- Sidebar - Brand -->
+  <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <div class="sidebar-brand-icon">
+      <!-- <i class="fas fa-laugh-wink"></i> -->
+      <img class="img-thumbnail" src="/static/img/LogoColegio.png">
+    </div>
+    <div class="sidebar-brand-text mx-3"><%= strings.dashboardTitle %></div>
+  </a>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider my-0">
+
+  <!-- Nav Item - Dashboard -->
+  <li class="nav-item <%= data.isActive === 'dashboard' ? 'active' : '' %>">
+    <a class="nav-link" href="/v0/main">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Dashboard</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider">
+
+  <!-- Heading -->
+  <div class="sidebar-heading">
+    Interfaz
+  </div>
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item <%= data.isActive === 'alumnos' ? 'active' : '' %>">
+    <a class="nav-link" href="/v0/alumnos">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Alumnos</span></a>
+  </li>
+
+  <!-- Nav Item - Charts -->
+  <li class="nav-item <%= data.isActive === 'facturacion' ? 'active' : '' %>">
+    <a class="nav-link" href="/v0/facturacion">
+      <i class="fas fa-fw fa-chart-area"></i>
+      <span>Facturación</span></a>
+  </li>
+
+  <!-- Divider -->
+  <hr class="sidebar-divider d-none d-md-block">
+
+  <!-- Sidebar Toggler (Sidebar) -->
+  <div class="text-center d-none d-md-inline">
+    <button class="rounded-circle border-0" id="sidebarToggle"></button>
+  </div>
+
+</ul>
+<!-- End of Sidebar -->
