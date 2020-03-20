@@ -16,3 +16,82 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="add-cliente" tabindex="-1" role="dialog" aria-labelledby="Agregar Cliente"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Añadir cliente</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form class="needs-validation" id="formSaveClient" novalidate>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-name"><strong>Nombre</strong></label>
+              <input type="text" class="form-control" id="client-name" placeholder="Ingrese el nombre" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-lastname"><strong>Apellido</strong></label>
+              <input type="text" class="form-control"  id="client-lastname" placeholder="Ingrese el apellido"required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-dni"><strong>DNI</strong></label>
+              <input type="text" class="form-control" id="client-dni" placeholder="Ingrese el DNI" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-email"><strong>Email</strong></label>
+              <input type="text" class="form-control"  id="client-email" placeholder="Ingrese el email">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="client-address"><strong>Direccion</strong></label>
+            <input type="text" class="form-control" id="client-address" placeholder="Ingrese la direccion">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-phone"><strong>Teléfono fijo</strong></label>
+              <input type="text" class="form-control" id="client-phone" placeholder="Ingrese el teléfono fijo">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-cellphone"><strong>Teléfono celular</strong></label>
+              <input type="text" class="form-control" id="client-cellphone" placeholder="Ingrese el teléfono celular" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-responsable"><strong>Responsable o tutor</strong></label>
+              <input type="text" class="form-control" id="client-responsable" placeholder="Ingrese el responsable" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-degree"><strong>Grado o curso</strong></label>
+              <input type="text" class="form-control" id="client-degree" placeholder="Ingrese el grado o curso" required>
+            </div>
+          </div>
+
+        </form>
+
+        <div class="modal-footer">
+          <a href="#" class="btn btn-secondary btn-icon-split" data-dismiss="modal">
+            <span class="icon text-white-50"><i class="fas fa-arrow-right"></i></span>
+            <span class="text">Cancelar</span>
+          </a>
+          <a href="#" class="btn btn-success btn-icon-split saveForm">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Guardar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
