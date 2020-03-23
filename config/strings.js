@@ -1,7 +1,7 @@
 const strings = {}
 
 strings.appName = 'Mutual SAM'
-strings.dashboardTitle = 'Mutual De Agostino'
+strings.dashboardTitle = `Mutual D'Agostino`
 
 strings.copyright = 'Mutual San Alberto Magno'
 

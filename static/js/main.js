@@ -17,10 +17,21 @@ $().ready(() => {
       type: 'PUT',
       data: formData,
       success: result => {
-        console.log(result)
+        $('#add-cliente').modal('toggle')
+        swal('Añadir cliente', 'El cliente se ha añadido satisfactoriamente!', 'success')
+        clearForm()
+        loadTable()
       },
       error: err => {
         console.log(err)
+      },
+      beforeSend: () => {
+        $('.saveForm').attr('disabled', 'disabled')
+        $('.saveForm .text').text('Procesando...')
+      },
+      complete: () => {
+        $('.saveForm').removeAttr('disabled')
+        $('.saveForm .text').text('Guardar')
       }
     })
   })
@@ -75,6 +86,14 @@ function loadTable() {
     },
     error: err => {
       console.log(err)
+    },
+    beforeSend: () => {
+      $('#tableClientsSpinner').removeClass('invisible')
+      $('.divTableClients').addClass('invisible')
+    },
+    complete: () => {
+      $('#tableClientsSpinner').addClass('invisible')
+      $('.divTableClients').removeClass('invisible')
     }
   })
 }
@@ -85,9 +104,9 @@ function createTable(dataSet) {
     aaData: dataSet,
     aoColumns: [
       {mData: '_id', visible: false, bSearchable: false},
-      {mData: 'nombre'},
-      {mData: 'apellido'},
-      {mData: 'curso'}
+      {mData: 'name'},
+      {mData: 'lastname'},
+      {mData: 'degree'}
     ],
     oLanguage: {
       sProcessing: 'Procesando...',
