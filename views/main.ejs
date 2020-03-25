@@ -43,17 +43,22 @@
             <h1 class="h3 mb-0 text-gray-800">Cuenta Corriente</h1>
           </div>
 
-          <!-- Content Row -->
+          <!-- Cards -->
           <div class="row">
 
-            <!-- Earnings (Monthly) Card Example -->
+            <!-- Card Total Clientes -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
                 <div class="card-body">
                   <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Clientes</div>
-                      <div class="h5 mb-0 font-weight-bold text-gray-800">77</div>
+                      <div class="h5 mb-0 font-weight-bold text-gray-800 d-none" id="cardTotalClients">-</div>
+                      <div class="text-center" id="spinnerCardTotalClients">
+                        <div class="spinner-border" role="status">
+                          <span class="sr-only">Loading...</span>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -124,28 +129,29 @@
             </div>
           </div>
 
+          <!-- Acciones Cliente -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Acciones de cliente</h6>
             </div>
             <div class="card-body">
-              <a href="#" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#add-cliente">
+              <a href="#" class="btn btn-primary btn-icon-split" id="add-cliente">
                 <span class="icon text-white-50">
                   <i class="fas fa-user"></i>
                 </span>
-                <span class="text">Añadir cliente</span>
+                <span data-toggle="tooltip" class="text">Añadir cliente</span>
               </a>
             </div>
           </div>
 
-          <!-- DataTales Example -->
+          <!-- DataTales Cliente -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
               <h6 class="m-0 font-weight-bold text-primary">Clientes</h6>
             </div>
             <div class="card-body">
               <div class="text-center">
-                <div class="spinner-border invisible" id="tableClientsSpinner" role="status">
+                <div class="spinner-border d-none" id="tableClientsSpinner" role="status">
                   <span class="sr-only">Loading...</span>
                 </div>
               </div>
@@ -154,9 +160,10 @@
                   <thead>
                     <tr>
                       <th>Id</th>
-                      <th>Nombre</th>
                       <th>Apellido</th>
+                      <th>Nombre</th>
                       <th>Curso</th>
+                      <th>Acciones</th>
                     </tr>
                   </thead>
                   <tbody></tbody>

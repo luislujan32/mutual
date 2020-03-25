@@ -17,19 +17,27 @@
   </div>
 </div>
 
-<div class="modal fade" id="add-cliente" tabindex="-1" role="dialog" aria-labelledby="Agregar Cliente"
+<div class="modal fade" id="modal-add-cliente" tabindex="-1" role="dialog" aria-labelledby="Agregar Cliente"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Añadir cliente</h5>
+        <h5 class="modal-title" id="add-cliente-title"></h5>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
       </div>
       <div class="modal-body">
+        <input type="hidden" id="input-add-client-action" action=""/>
+        <div id="update-client-spinner" style="height:100px">
+          <div class="text-center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span>Obteniendo información</span>
+          </div>
+        </div>
         <form class="needs-validation" id="formSaveClient" novalidate>
-
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="client-name"><strong>Nombre</strong></label>
@@ -89,6 +97,10 @@
           <a href="#" class="btn btn-success btn-icon-split saveForm">
             <span class="icon text-white-50"><i class="fas fa-check"></i></span>
             <span class="text">Guardar</span>
+          </a>
+          <a href="#" class="btn btn-success btn-icon-split saveFormUpdate disabled" idCustomer="">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Modificar</span>
           </a>
         </div>
       </div>
