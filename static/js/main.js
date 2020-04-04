@@ -5,7 +5,8 @@ $().ready(() => {
 
   loadTable()
 
-  $('.saveForm').click(() => {
+  $('.saveForm').click((e) => {
+    e.preventDefault()
     const params = {
       url: '/v0/clientes',
       method: 'PUT',
@@ -138,15 +139,18 @@ $().ready(() => {
   })
 })
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
 function sendFormCreateUpdate(params) {
   const validatedForm = validateForm()
   if (validatedForm.result === 'error') {
-    showErrorsInForm()
+    if ($('.form-not-valid-alert').length === 0) {
+      $('#formSaveClient').prepend('<div class="alert alert-danger form-not-valid-alert" role="alert">Los campos marcados en rojo son obligatorios. </div>')
+    }
     return false
   }
   $('.form-not-valid-alert').remove()
   const formData = JSON.stringify(validatedForm.obj)
-
   $.ajax({
     url: params.url,
     dataType: 'json',
@@ -173,7 +177,32 @@ function sendFormCreateUpdate(params) {
       loadTable()
     },
     error: err => {
-      console.log(err)
+      if (err.status === 422) {
+        const listErrors = err.responseJSON.errors.result.errors
+        if ($('.form-not-valid-alert').length === 0) {
+          $('#formSaveClient').prepend('<div class="alert alert-danger form-not-valid-alert" role="alert">Los campos marcados en rojo son obligatorios. </div>')
+        }
+        listErrors.forEach(element => {
+          if (element.field === 'name') {
+            $('#client-name').addClass('input-error')
+          }
+          if (element.field === 'lastname') {
+            $('#client-lastname').addClass('input-error')
+          }
+          if (element.field === 'dni') {
+            $('#client-dni').addClass('input-error')
+          }
+          if (element.field === 'responsable') {
+            $('#client-responsable').addClass('input-error')
+          }
+          if (element.field === 'cellphone') {
+            $('#client-cellphone').addClass('input-error')
+          }
+          if (element.degree === 'grado') {
+            $('#client-degree').addClass('input-error')
+          }
+        })
+      }
     },
     beforeSend: () => {
       if (params.action === 'create') {
@@ -212,44 +241,57 @@ function errorDeleteUser(text) {
   })
 }
 
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> FORMS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
+
 function validateForm() {
   const obj = {}
-  const hasErrors = false
 
-  const form = document.getElementById('formSaveClient')
-  if (form.checkValidity() === false) {
-    return {result: 'error'}
-  }
-  // Implementar validacion de campos
+  $(':input').removeClass('input-error')
+
   obj.name = $('#client-name').val()
+  if (!obj.name) {
+    $('#client-name').addClass('input-error')
+  }
   obj.lastname = $('#client-lastname').val()
+  if (!obj.lastname) {
+    $('#client-lastname').addClass('input-error')
+  }
   obj.dni = $('#client-dni').val()
+  if (!obj.dni) {
+    $('#client-dni').addClass('input-error')
+  }
+  obj.cellphone = $('#client-cellphone').val()
+  if (!obj.cellphone) {
+    $('#client-cellphone').addClass('input-error')
+  }
+  obj.responsable = $('#client-responsable').val()
+  if (!obj.responsable) {
+    $('#client-responsable').addClass('input-error')
+  }
+  obj.degree = $('#client-degree').val()
+  if (!obj.degree) {
+    $('#client-degree').addClass('input-error')
+  }
   obj.email = $('#client-email').val()
   obj.address = $('#client-address').val()
   obj.phone = $('#client-phone').val()
-  obj.cellphone = $('#client-cellphone').val()
-  obj.responsable = $('#client-responsable').val()
-  obj.degree = $('#client-degree').val()
 
-  if (hasErrors) {
+  const countErrors = $('.input-error')
+  if (countErrors.length > 0) {
     return {result: 'error'}
   }
-  return {result: 'success', obj}
-}
 
-function showErrorsInForm() {
-  $('#formSaveClient').addClass('was-validated')
-  if ($('.form-not-valid-alert').length === 0) {
-    $('#formSaveClient').prepend('<div class="alert alert-danger form-not-valid-alert" role="alert">Los campos marcados en rojo son obligatorios. </div>')
-  }
+  return {result: 'success', obj}
 }
 
 function clearForm() {
   const form = document.getElementById('formSaveClient')
   form.reset()
-  $(form).removeClass('was-validated')
+  $(':input').removeClass('input-error')
   $('.form-not-valid-alert').remove()
 }
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> TABLES <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 function loadTable() {
   $.ajax({
@@ -327,6 +369,8 @@ function createTable(dataSet) {
     }
   })
 }
+
+/* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>  CARDS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
 
 function loadCardsData(data) {
   // Total clientes

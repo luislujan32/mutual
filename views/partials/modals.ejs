@@ -37,49 +37,49 @@
             <span>Obteniendo información</span>
           </div>
         </div>
-        <form class="needs-validation" id="formSaveClient" novalidate>
+        <form id="formSaveClient" novalidate>
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="client-name"><strong>Nombre</strong></label>
-              <input type="text" class="form-control" id="client-name" placeholder="Ingrese el nombre" required>
+              <input type="text" class="form-control" id="client-name" placeholder="Ingrese el nombre" maxlength="100" required>
             </div>
             <div class="form-group col-md-6">
               <label for="client-lastname"><strong>Apellido</strong></label>
-              <input type="text" class="form-control"  id="client-lastname" placeholder="Ingrese el apellido"required>
+              <input type="text" class="form-control" id="client-lastname" placeholder="Ingrese el apellido" maxlength="100" required>
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="client-dni"><strong>DNI</strong></label>
-              <input type="text" class="form-control" id="client-dni" placeholder="Ingrese el DNI" required>
+              <input type="number" class="form-control" id="client-dni" placeholder="Ingrese el DNI" maxlength="8" required>
             </div>
             <div class="form-group col-md-6">
               <label for="client-email"><strong>Email</strong></label>
-              <input type="text" class="form-control"  id="client-email" placeholder="Ingrese el email">
+              <input type="text" class="form-control"  id="client-email" placeholder="Ingrese el email" maxlength="100">
             </div>
           </div>
 
           <div class="form-group">
             <label for="client-address"><strong>Direccion</strong></label>
-            <input type="text" class="form-control" id="client-address" placeholder="Ingrese la direccion">
+            <input type="text" class="form-control" id="client-address" placeholder="Ingrese la direccion" maxlength="300">
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="client-phone"><strong>Teléfono fijo</strong></label>
-              <input type="text" class="form-control" id="client-phone" placeholder="Ingrese el teléfono fijo">
+              <input type="number" class="form-control" id="client-phone" placeholder="Ingrese el teléfono fijo" maxlength="12">
             </div>
             <div class="form-group col-md-6">
               <label for="client-cellphone"><strong>Teléfono celular</strong></label>
-              <input type="text" class="form-control" id="client-cellphone" placeholder="Ingrese el teléfono celular" required>
+              <input type="number" class="form-control" id="client-cellphone" placeholder="Ingrese el teléfono celular" maxlength="20" required >
             </div>
           </div>
 
           <div class="form-row">
             <div class="form-group col-md-6">
               <label for="client-responsable"><strong>Responsable o tutor</strong></label>
-              <input type="text" class="form-control" id="client-responsable" placeholder="Ingrese el responsable" required>
+              <input type="text" class="form-control" id="client-responsable" placeholder="Ingrese el responsable" maxlength="100" required>
             </div>
             <div class="form-group col-md-6">
               <label for="client-degree"><strong>Grado o curso</strong></label>
@@ -107,3 +107,5 @@
     </div>
   </div>
 </div>
+
+<link href="/static/css/main.css" rel="stylesheet">
