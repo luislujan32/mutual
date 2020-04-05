@@ -15,6 +15,7 @@
   <%- include("partials/header") %>
   <!-- Custom styles for this page -->
   <link href="/static/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link href="/static/css/main.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -203,5 +204,107 @@
     <script src="/static/js/main.js"></script>
 
 </body>
+
+<div class="modal fade" id="modal-add-cliente" tabindex="-1" role="dialog" aria-labelledby="Agregar Cliente"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="add-cliente-title"></h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="input-add-client-action" action="" />
+        <div id="update-client-spinner" style="height:100px">
+          <div class="text-center">
+            <div class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+            <span>Obteniendo información</span>
+          </div>
+        </div>
+        <form id="formSaveClient" novalidate>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-name"><strong>Nombre</strong></label>
+              <input type="text" class="form-control" id="client-name" placeholder="Ingrese el nombre" maxlength="100"
+                required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-lastname"><strong>Apellido</strong></label>
+              <input type="text" class="form-control" id="client-lastname" placeholder="Ingrese el apellido"
+                maxlength="100" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-dni"><strong>DNI</strong></label>
+              <input type="number" class="form-control" id="client-dni" placeholder="Ingrese el DNI" maxlength="8"
+                required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-email"><strong>Email</strong></label>
+              <input type="text" class="form-control" id="client-email" placeholder="Ingrese el email" maxlength="100">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="client-address"><strong>Dirección</strong></label>
+            <input type="text" class="form-control" id="client-address" placeholder="Ingrese la direccion"
+              maxlength="300">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-phone"><strong>Teléfono fijo</strong></label>
+              <input type="number" class="form-control" id="client-phone" placeholder="Ingrese el teléfono fijo"
+                maxlength="12">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-cellphone"><strong>Teléfono celular</strong></label>
+              <input type="number" class="form-control" id="client-cellphone" placeholder="Ingrese el teléfono celular"
+                maxlength="20" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-responsable"><strong>Responsable o tutor</strong></label>
+              <input type="text" class="form-control" id="client-responsable" placeholder="Ingrese el responsable"
+                maxlength="100" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-degree"><strong>Grado o curso</strong></label>
+              <select class="browser-default custom-select" id="client-degree">
+                <option value="">Seleccione una opción...</option>
+                <% for(var i=0; i < GRADOS.length; i++) { %>
+                <option value="<%= GRADOS[i].id %>"><%= GRADOS[i].name%></option>
+                <% } %>
+              </select>
+              <!-- <input type="text" class="form-control" id="client-degree" placeholder="Ingrese el grado o curso" required> -->
+            </div>
+          </div>
+        </form>
+
+        <div class="modal-footer">
+          <a href="#" class="btn btn-secondary btn-icon-split" data-dismiss="modal">
+            <span class="icon text-white-50"><i class="fas fa-arrow-right"></i></span>
+            <span class="text">Cancelar</span>
+          </a>
+          <a href="#" class="btn btn-success btn-icon-split saveForm">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Guardar</span>
+          </a>
+          <a href="#" class="btn btn-success btn-icon-split saveFormUpdate disabled" idCustomer="">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Modificar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 </html>

@@ -269,7 +269,7 @@ function validateForm() {
     $('#client-responsable').addClass('input-error')
   }
   obj.degree = $('#client-degree').val()
-  if (!obj.degree) {
+  if (obj.degree === '') {
     $('#client-degree').addClass('input-error')
   }
   obj.email = $('#client-email').val()
