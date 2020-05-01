@@ -5,7 +5,7 @@ $().ready(() => {
 
   loadTable()
 
-  $('.saveForm').click((e) => {
+  $('.saveForm').click(e => {
     e.preventDefault()
     const params = {
       url: '/v0/clientes',
@@ -137,6 +137,12 @@ $().ready(() => {
       }
     })
   })
+
+  $('#clients_table tbody').on('click', '.client-add-factura', function () {
+    const name = clientTable.row($(this).parents('tr')).data().name + ' ' + clientTable.row($(this).parents('tr')).data().lastname
+    $('.txtFacturaName').html(`Añadir una factura para el cliente <strong>${name}</strong>`)
+    $('#modal-add-factura').modal('show')
+  })
 })
 
 /* >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ACTIONS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< */
@@ -198,7 +204,7 @@ function sendFormCreateUpdate(params) {
           if (element.field === 'cellphone') {
             $('#client-cellphone').addClass('input-error')
           }
-          if (element.degree === 'grado') {
+          if (element.field === 'degree') {
             $('#client-degree').addClass('input-error')
           }
         })
@@ -325,6 +331,7 @@ function createTable(dataSet) {
       {data: 'lastname'},
       {data: 'name'},
       {data: 'degree'},
+      {data: 'saldo'},
       {data: null}
     ],
     columnDefs: [
@@ -333,14 +340,17 @@ function createTable(dataSet) {
         visible: false
       },
       {
-        targets: [4],
-        orderable: false,
-        searcheable: false
+        targets: [5],
+        visible: false
       },
       {
-        targets: -1,
+        targets: [6],
         data: null,
-        defaultContent: '<button type="button" class="btn btn-default edit-client" data-toggle="tooltip" data-placement="top" title="Editar" ><i class="fa fa-edit"></i></button><button type="button" class="btn btn-default delete-client"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></button>'
+        defaultContent: '<button type="button" class="btn btn-default edit-client" data-toggle="tooltip" data-placement="top" title="Editar" ><i class="fa fa-edit"></i></button>' +
+                        '<button type="button" class="btn btn-default delete-client"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Eliminar"></i></button>' +
+                        '<button type="button" class="btn btn-default client-add-factura"><i class="fas fa-dollar-sign" data-toggle="tooltip" data-placement="top" title="Factura"></i></button>' +
+                        '<button type="button" class="btn btn-default client-add-recibo"><i class="fas fa-coins" data-toggle="tooltip" data-placement="top" title="Recibo"></i></button>' +
+                        '<button type="button" class="btn btn-default details-client"><i class="fas fa-file-invoice-dollar" data-toggle="tooltip" data-placement="top" title="Detalles"></i></button>'
       }
     ],
     language: {

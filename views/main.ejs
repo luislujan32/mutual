@@ -29,24 +29,18 @@
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
-
       <!-- Main Content -->
       <div id="content">
-
         <!-- Topbar -->
         <%- include("partials/topbar") %>
         <!-- End of Topbar -->
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Cuenta Corriente</h1>
           </div>
-
           <!-- Cards -->
           <div class="row">
-
             <!-- Card Total Clientes -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-primary shadow h-100 py-2">
@@ -68,7 +62,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-success shadow h-100 py-2">
@@ -85,7 +78,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Earnings (Monthly) Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
@@ -111,7 +103,6 @@
                 </div>
               </div>
             </div>
-
             <!-- Pending Requests Card Example -->
             <div class="col-xl-3 col-md-6 mb-4">
               <div class="card border-left-warning shadow h-100 py-2">
@@ -129,7 +120,6 @@
               </div>
             </div>
           </div>
-
           <!-- Acciones Cliente -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -144,7 +134,6 @@
               </a>
             </div>
           </div>
-
           <!-- DataTales Cliente -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -164,6 +153,7 @@
                       <th>Apellido</th>
                       <th>Nombre</th>
                       <th>Curso</th>
+                      <th>Saldo ($)<th>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -172,19 +162,14 @@
               </div>
             </div>
           </div>
-
         <!-- /.container-fluid -->
-
       </div>
       <!-- End of Main Content -->
-
       <!-- Footer -->
       <%- include("partials/footer") %>
       <!-- End of Footer -->
-
     </div>
     <!-- End of Content Wrapper -->
-
   </div>
   <!-- End of Page Wrapper -->
 
@@ -195,11 +180,9 @@
 
   <!-- Logout Modal-->
   <%- include("partials/modals") %>
-
     <!-- Page level plugins -->
     <script src="/static/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="/static/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-
     <!-- Page custom scripts -->
     <script src="/static/js/main.js"></script>
 
@@ -290,7 +273,7 @@
 
         <div class="modal-footer">
           <a href="#" class="btn btn-secondary btn-icon-split" data-dismiss="modal">
-            <span class="icon text-white-50"><i class="fas fa-arrow-right"></i></span>
+            <span class="icon text-white-50"><i class="fas fa-times"></i></span>
             <span class="text">Cancelar</span>
           </a>
           <a href="#" class="btn btn-success btn-icon-split saveForm">
@@ -300,6 +283,84 @@
           <a href="#" class="btn btn-success btn-icon-split saveFormUpdate disabled" idCustomer="">
             <span class="icon text-white-50"><i class="fas fa-check"></i></span>
             <span class="text">Modificar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="modal-add-factura" tabindex="-1" role="dialog" aria-labelledby="Facturación" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Añadir factura</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+      <div class="modal-body">
+        <p class="txtFacturaName"></p>
+
+        <form id="formSaveFactura" novalidate>
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="factura-numero"><strong>N° Factura</strong></label>
+              <input type="text" class="form-control" id="factura-number" placeholder="Ingrese el número de factura" maxlength="100" required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="factura-importe"><strong>Importe ($)</strong></label>
+              <input type="number" class="form-control" id="factura-importe" placeholder="Ingrese el importe ($)" required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="factura-detalle"><strong>Detalle</strong></label>
+            <button type="button" class="btn btn-link"><i class="fa fa-plus"></i> Añadir producto</button>
+            <input type="text" class="form-control factura-detalle" id="lista-detalles-factura" placeholder="Detalle" maxlength="100" required>
+          </div>
+
+
+
+          <!-- <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-dni"><strong>DNI</strong></label>
+              <input type="number" class="form-control" id="client-dni" placeholder="Ingrese el DNI" maxlength="8"
+                required>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-email"><strong>Email</strong></label>
+              <input type="text" class="form-control" id="client-email" placeholder="Ingrese el email" maxlength="100">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="client-address"><strong>Dirección</strong></label>
+            <input type="text" class="form-control" id="client-address" placeholder="Ingrese la direccion"
+              maxlength="300">
+          </div>
+
+          <div class="form-row">
+            <div class="form-group col-md-6">
+              <label for="client-phone"><strong>Teléfono fijo</strong></label>
+              <input type="number" class="form-control" id="client-phone" placeholder="Ingrese el teléfono fijo"
+                maxlength="12">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="client-cellphone"><strong>Teléfono celular</strong></label>
+              <input type="number" class="form-control" id="client-cellphone" placeholder="Ingrese el teléfono celular"
+                maxlength="20" required>
+            </div>
+          </div> -->
+
+        </form>
+
+        <div class="modal-footer">
+          <a href="#" class="btn btn-secondary btn-icon-split" data-dismiss="modal">
+            <span class="icon text-white-50"><i class="fas fa-times"></i></span>
+            <span class="text">Cerrar</span>
+          </a>
+          <a href="#" class="btn btn-success btn-icon-split">
+            <span class="icon text-white-50"><i class="fas fa-check"></i></span>
+            <span class="text">Aceptar</span>
           </a>
         </div>
       </div>
